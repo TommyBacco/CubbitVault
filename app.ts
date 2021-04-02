@@ -7,8 +7,18 @@ const morgan = require('morgan');
 const dotenv = require("dotenv");
 const { v1: uuidv1 } = require('uuid');
 const app = express();
-const upload = multer({dest: 'uploads/'});
 const PORT = 5000;
+const path = require('path');
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, 'upload/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+const upload = multer({ storage: storage });
 
 dotenv.config();
 app.use(cors()); 
@@ -39,6 +49,16 @@ app.get('/', (req,res) => res.send('Express + TypeScript Server'));
 app.listen(PORT, () => {
   console.log('⚡️[server]: Server is running at https://localhost:' + PORT);
 });
+
+app.get('/v1/files', (req,res)=> {
+	res.set({
+	  "Access-Control-Expose-Headers": "Content-Disposition",
+	  'Content-Disposition': 'attachment',
+	  'filename':"path"
+	})
+	var filePath = "./upload/blob"
+	var resolvedPath = path.resolve(filePath);
+	res.sendFile(resolvedPath)})
 
 
 app.post('/v1/files', upload.single("file") ,(req, res, next) => {
