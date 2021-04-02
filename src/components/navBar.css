@@ -1,0 +1,40 @@
+.navbar{
+position: relative;
+height: 72px;
+left: 0px;
+top: 0px;
+right: 0px;
+background: #292929;
+}
+.EncryptedButton{
+	position: absolute;
+left: 50%;
+right: 0%;
+top: 20%;
+bottom: 20%;
+
+font-family: Nunito;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 187.5%;
+
+/* or 26px */
+display: flex;
+justify-content: center;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.logo{
+position: absolute;
+width: 119px;
+height: 46px;
+left: 23px;
+top: 13px;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: local('Nunito'), url(../fonts/nunito/Nunito-Regular.ttf) format('truetype');}

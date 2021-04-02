@@ -1,0 +1,259 @@
+.h2{
+
+position: absolute;
+height: 47px;
+left: 7.85%;
+right: 7.89%;
+top: 216px;
+/* h2 */
+font-family: Nunito;
+font-style: normal;
+font-weight: 900;
+font-size: 36px;
+line-height: 47px;
+
+/* identical to box height, or 130% */
+display: flex;
+justify-content: center;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.input{
+
+position: absolute;
+width: 264px;
+height: 48px;
+left: calc(50% - 264px/2);
+top: calc(50% - 48px/2 - 12px);
+background: #FFFFFF;
+border-radius: 3px;
+}
+
+.file{
+position: absolute;
+left: 9.09%;
+right: 81.82%;
+top: 25%;
+bottom: 25%;
+}
+.textUpload{
+color: #292929;
+position: absolute;
+left: 28.03%;
+right: 18.18%;
+top: 0%;
+bottom: 0%;
+
+}
+
+.uploadLabel{
+	min-height: 100%;
+	min-width: 100%;
+}
+
+.arrow{
+position: absolute;
+left: 86.36%;
+right: 4.55%;
+top: 25%;
+bottom: 25%;
+}
+
+.h3{
+	position: absolute;
+height: 54px;
+left: 30.83%;
+right: 30.83%;
+top: 287px;
+
+/* p_standard */
+font-family: Nunito;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 26px;
+
+/* or 162% */
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.dropzone_large{
+position: absolute;
+width: 936px;
+height: 216px;
+left: 252px;
+top: 389px;
+background: #FFA047;
+
+}
+.backGround_drop{
+	/* DropBackground */
+
+position: absolute;
+left: 0.85%;
+right: 0.85%;
+top: 3.7%;
+bottom: 3.7%;
+
+background: rgba(22, 22, 22, 0.16);
+border: 1px dashed #363636;
+box-sizing: border-box;
+
+}
+.inputFile{
+	/* Files */
+position: absolute;
+width: 264px;
+height: 48px;
+left: calc(50% - 264px/2);
+top: calc(50% - 48px/2 - 12px);
+
+}
+.fileLogo{
+	position: absolute;
+left: 9.09%;
+right: 81.82%;
+top: 25%;
+bottom: 25%;
+
+}
+
+.dropText{
+position: absolute;
+left: 20.53%;
+right: 20.27%;
+top: 66.67%;
+bottom: 22.22%;
+
+/* p_standard */
+font-family: Nunito;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 26px;
+
+/* or 162% */
+display: flex;
+justify-content: center;
+text-align: center;
+
+color: #161616;
+}
+
+.actions{
+position: absolute;
+width: 360px;
+height: 48px;
+left: 540px;
+top: 0px;
+
+}
+
+
+.encrypt{
+position: absolute;
+width: 168px;
+height: 48px;
+left: calc(50% - 168px/2 - 96px);
+top: 653px;
+border:0px;
+background: #009EFF;
+border-radius: 3px;
+}
+
+.solid{
+position: absolute;
+left: 81.82%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+border: 1px #98A0A6;
+}
+
+.decrypt{
+position: absolute;
+width: 168px;
+height: 48px;
+left: calc(50% - 168px/2 + 96px);
+top: 653px;
+border:0px;
+background: #0065FF;
+border-radius: 3px;
+
+}
+
+p{
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+display: flex;
+align-items: center;
+
+
+
+font-family: Nunito;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 26px;
+color: #FFFFFF;
+/* or 162% */
+}
+
+.upload{
+	display: flex;
+align-items: center;
+text-align: center;
+justify-content: center;
+}
+
+.download{
+		display: flex;
+align-items: center;
+text-align: center;
+justify-content: center;
+}
+.footText{
+	/* Caption */
+
+position: absolute;
+left: 15.28%;
+right: 17.5%;
+top: 88.59%;
+bottom: 2.38%;
+
+/* p_medium */
+font-family: Nunito;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 23px;
+/* or 162% */
+display: flex;
+align-items: flex-end;
+text-align: center;
+justify-content: center;
+
+color: #98A0A6;
+
+}
+
+.dropText{
+position: absolute;
+left: 0%;
+right: 0%;
+top: 60%;
+bottom: 0%;
+}
+
+.fileLogo{
+position: absolute;
+left: 48%;
+bottom: 45.45%;
+}
