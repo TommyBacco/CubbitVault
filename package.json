@@ -11,6 +11,9 @@
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react-dom": "^17.0.0",
+    "crypto-js": "^4.0.0",
+    "crypto-ts": "^1.0.2",
+    "file-saver": "^2.0.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.3",
@@ -50,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@types/file-saver": "^2.0.1",
     "@types/react": "^17.0.3",
     "@types/redux-logger": "^3.0.8",
     "@types/styled-components": "^5.1.9"

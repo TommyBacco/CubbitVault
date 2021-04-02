@@ -8,9 +8,6 @@ import './App.css';
 
 function App(){
 
-const dispatch = useAppDispatch();
-const{file,selected,errors} = useAppSelector(fileSelector)
-
 
   return (
   		<div id="content">

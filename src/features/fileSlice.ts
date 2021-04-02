@@ -3,13 +3,15 @@ import type { RootState } from '../store'
 
 
 export interface FileState{
-	file:File | null
+	fileUrl: string
+	fileName:string
 	selected: boolean
 	errors:string
 }
 
 const initialState:FileState = {
-	file : null,
+	fileUrl : "",
+	fileName:"",
 	selected:false,
 	errors:""
 }
@@ -24,13 +26,16 @@ const fileSlice = createSlice({
 		setErrors:(state, {payload}:PayloadAction<string>)=>{
 			state.errors=payload;
 		},
-		setFile:(state, {payload}:PayloadAction<File>)=>{
-			state.file=payload;
+		setFileUrl:(state, {payload}:PayloadAction<string>)=>{
+			state.fileUrl=payload;
+		},
+		setFileName:(state, {payload}:PayloadAction<string>)=>{
+			state.fileName=payload;
 		},
 	},
 });
 
-export const { setSelected, setErrors, setFile } = fileSlice.actions;
+export const { setSelected, setErrors, setFileUrl, setFileName } = fileSlice.actions;
 export default fileSlice.reducer
 export const fileSelector = (state: { fileStore: FileState }) =>
   state.fileStore;
