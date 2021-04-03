@@ -5,10 +5,12 @@ import type { RootState } from '../store'
 export interface FileDownloadState{
 
 	downloadPressed:boolean
+	fileidInserted:boolean
 	uuid:string
 	key:string
 	name:string
 	mime:string
+	size:number
 }
 
 const initialState:FileDownloadState = {
@@ -17,7 +19,9 @@ const initialState:FileDownloadState = {
 	key:"",
 	name:"",
 	mime:"",
-	downloadPressed:false
+	fileidInserted:false,
+	downloadPressed:false,
+	size:0
 }
 
 const fileUploadSlice = createSlice({
@@ -41,10 +45,16 @@ const fileUploadSlice = createSlice({
 		setMime:(state, {payload}:PayloadAction<string>)=>{
 			state.mime=payload;
 		},
+		setSize:(state, {payload}:PayloadAction<number>)=>{
+			state.size=payload;
+		},
+		setFileidInserted:(state, {payload}:PayloadAction<boolean>)=>{
+			state.fileidInserted=payload;
+		},
 	},
 });
 
-export const { setUuid, setKey, setDownloadPressed, setMime, setName} = fileUploadSlice.actions;
+export const { setUuid, setKey, setDownloadPressed, setMime, setName, setSize, setFileidInserted} = fileUploadSlice.actions;
 export default fileUploadSlice.reducer
 export const fileSelector = (state: { fileState: FileDownloadState }) =>
   state.fileState;
