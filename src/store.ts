@@ -4,6 +4,7 @@ import {composeWithDevTools} from "redux-devtools-extension"
 import {createLogger} from 'redux-logger';
 import fileSliceReducer from './features/fileSlice'
 import fileDownloadReducer from './features/fileDownloadSlice'
+import toggleReducer from './features/toggleSlice'
 import { configureStore, Action } from "@reduxjs/toolkit";
 
 
@@ -13,7 +14,8 @@ const logger = createLogger();
 const store = configureStore({
   reducer: {
     fileState: fileSliceReducer,
-    fileDownloadState : fileDownloadReducer
+    fileDownloadState : fileDownloadReducer,
+    toggleState: toggleReducer
   },
 });
 

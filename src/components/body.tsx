@@ -21,6 +21,7 @@ const fileName = useAppSelector(state=>state.fileState.fileName)
 const mimeType = useAppSelector(state=>state.fileState.mimeType)
 const dispatch = useAppDispatch()
 
+
 const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>)=> {
         
         e.preventDefault()
@@ -108,29 +109,29 @@ const uploadFile =  async  () => {
 
 return(
 		<div>
-		<h3 className="h3">^#5 -&quot;$#=.-+(-$=%(+$=$-&quot;18/3(.-= -#=#$&quot;18/3(.-K=p$&quot;41$= -8=%(+$=38/$= -#=, (-3 (-=8.41=/1(5 &quot;8&gt;</h3>
-		<div className="dropzone_large">
-			<div onDrop={onFilesDrop}  className="backGround_drop" onDragOver={dragOver}>
-				 <input accept="*"
-				   id="file" multiple={true} type="file" name="file"
-				   onChange={(e) => handleInputChange(e)} hidden/>
-				<label htmlFor="file" className="input" hidden={fileSelected ? true:false}>
-					<img src={logo} className="file"/>
-					<p className="textUpload">`'..2$=%(+$&gt;</p>
-					<img src={divider} className="solid"></img>
-					<img src={arrow} className="arrow"></img>
-				</label>
-				{fileSelected && <h2 className="dropText">{fileName}</h2>}
+			<h3 id="h3">^#5 -&quot;$#=.-+(-$=%(+$=$-&quot;18/3(.-= -#=#$&quot;18/3(.-K=p$&quot;41$= -8=%(+$=38/$= -#=, (-3 (-=8.41=/1(5 &quot;8&gt;</h3>
+			<div id="dropzone_large">
+				<div onDrop={onFilesDrop}  id="backGround_drop" onDragOver={dragOver}>
+					 <input accept="*"
+					   id="file" multiple={true} type="file" name="file"
+					   onChange={(e) => handleInputChange(e)} hidden/>
+					<label htmlFor="file" id="input" hidden={fileSelected ? true:false}>
+						<img src={logo} id="file"/>
+						<p id="textUpload">`'..2$=%(+$&gt;</p>
+						<img src={divider} id="solid"></img>
+						<img src={arrow} id="arrow"></img>
+					</label>
+					<div id="withFile">
+						<img src={fileLogo} id="fileLogo" hidden={fileSelected ? false:true}/>
+						{fileSelected && <h2 id="dropText">{fileName}</h2>}
+					</div>
+				</div>
+				{fileSelected ? null:<h2 id="dropText">or drop a file here</h2>}
 			</div>
-			{fileSelected ? null:<h2 className="dropText">or drop a file here</h2>}
-			<img src={fileLogo} className="fileLogo" hidden={fileSelected ? false:true}/>
-
-		</div>
-		<div className="actions">
-			<button type="button" onClick={ uploadFile} className="encrypt"><p className="upload">Encrypt and upload</p></button>
-			<button type="button" onClick={download} className="decrypt"><p className="download">Download and decrypt</p></button>
-		</div>
-		<h2 className="footText">q&apos;$=6&apos;.+$=(2=-$5$1=3&apos;$=24,=.%=3&apos;$=/ 132=J=(3=(2=&amp;1$ 3$1=.1=+$22$1I=#$/$-#(-&amp;=.-=&apos;.6=6$++=3&apos;$=(-#(5(#4 +2=6.1*=3.&amp;$3&apos;$1</h2>
+			<div id="actions">
+				<button type="button" onClick={ uploadFile} id="encrypt"><p id="upload">Encrypt and upload</p></button>
+				<button type="button" onClick={download} id="decrypt"><p id="download">Download and decrypt</p></button>
+			</div>
 		</div>
 		)
 	}

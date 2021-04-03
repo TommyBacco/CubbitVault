@@ -1,5 +1,11 @@
-
-.input{
+#withFile{
+position: absolute;
+width: 112px;
+height: 88px;
+left: 412px;
+top: 64px;
+}
+#input{
 
 position: absolute;
 width: 264px;
@@ -10,14 +16,14 @@ background: #FFFFFF;
 border-radius: 3px;
 }
 
-.file{
+#file{
 position: absolute;
 left: 9.09%;
 right: 81.82%;
 top: 25%;
 bottom: 25%;
 }
-.textUpload{
+#textUpload{
 color: #292929;
 position: absolute;
 left: 28.03%;
@@ -27,12 +33,12 @@ bottom: 0%;
 
 }
 
-.uploadLabel{
+#uploadLabel{
 	min-height: 100%;
 	min-width: 100%;
 }
 
-.arrow{
+#arrow{
 position: absolute;
 left: 86.36%;
 right: 4.55%;
@@ -40,7 +46,7 @@ top: 25%;
 bottom: 25%;
 }
 
-.h3{
+#h3{
 	position: absolute;
 height: 54px;
 left: 30.83%;
@@ -60,16 +66,15 @@ text-align: center;
 color: #FFFFFF;
 }
 
-.dropzone_large{
+#dropzone_large{
 position: absolute;
 width: 936px;
 height: 216px;
 left: 252px;
 top: 389px;
 background: #FFA047;
-
 }
-.backGround_drop{
+#backGround_drop{
 	/* DropBackground */
 
 position: absolute;
@@ -83,7 +88,7 @@ border: 1px dashed #363636;
 box-sizing: border-box;
 
 }
-.inputFile{
+#inputFile{
 	/* Files */
 position: absolute;
 width: 264px;
@@ -92,21 +97,23 @@ left: calc(50% - 264px/2);
 top: calc(50% - 48px/2 - 12px);
 
 }
-.fileLogo{
-	position: absolute;
-left: 9.09%;
-right: 81.82%;
-top: 25%;
-bottom: 25%;
+#fileLogo{
+position: absolute;
+left: 8.33%;
+right: 12.5%;
+top: 4.17%;
+bottom: 4.17%;
 
 }
 
-.dropText{
+#dropText{
 position: absolute;
-left: 20.53%;
-right: 20.27%;
-top: 66.67%;
-bottom: 22.22%;
+left: 0%;
+right: 0%;
+top: 70.45%;
+bottom: 0%;
+
+
 
 /* p_standard */
 font-family: Nunito;
@@ -123,7 +130,7 @@ text-align: center;
 color: #161616;
 }
 
-.actions{
+#actions{
 position: absolute;
 width: 360px;
 height: 48px;
@@ -133,7 +140,7 @@ top: 0px;
 }
 
 
-.encrypt{
+#encrypt{
 position: absolute;
 width: 168px;
 height: 48px;
@@ -144,16 +151,17 @@ background: #009EFF;
 border-radius: 3px;
 }
 
-.solid{
+#solid{
 position: absolute;
 left: 81.82%;
 right: 0%;
 top: 0%;
 bottom: 0%;
-border: 1px #98A0A6;
+border: 1px solid #98A0A6;
+opacity: 50%
 }
 
-.decrypt{
+#decrypt{
 position: absolute;
 width: 168px;
 height: 48px;
@@ -185,14 +193,14 @@ color: #FFFFFF;
 /* or 162% */
 }
 
-.upload{
+#upload{
 	display: flex;
 align-items: center;
 text-align: center;
 justify-content: center;
 }
 
-.download{
+#download{
 		display: flex;
 align-items: center;
 text-align: center;
@@ -200,7 +208,7 @@ justify-content: center;
 }
 
 
-.dropText{
+#dropText{
 position: absolute;
 left: 0%;
 right: 0%;
@@ -208,7 +216,7 @@ top: 60%;
 bottom: 0%;
 }
 
-.fileLogo{
+#fileLogo{
 position: absolute;
 left: 48%;
 bottom: 45.45%;

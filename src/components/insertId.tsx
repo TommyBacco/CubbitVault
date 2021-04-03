@@ -18,14 +18,18 @@ const getMetadata = function (){
 	fetch("http://localhost:5000/v1/data", { method: "GET", headers: {'uuid':uuid }})
 		.then((res)=>res.json()).then((json)=>{
 
+	if(json['filename'] != 'not-found'){
 		dispatch(setMime(json['mime']))
 		dispatch(setName(json['filename']))
 		dispatch(setSize(json['size']))
 		dispatch(setDownloadPressed(false))
 		dispatch(setFileidInserted(true))
-	
+	}else{
+		alert("Check again your Id")
+	}
 		})
-}
+	}
+
 
 
 return(

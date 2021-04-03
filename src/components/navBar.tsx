@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import logo from '../assets/LogoAndBrand.svg';
 import './navBar.css'
 import styled, { css } from 'styled-components';
-
+import {useAppSelector,useAppDispatch} from "../hooks";
+import {setPlain} from '../features/toggleSlice'
 const ButtonGroup = styled.div`
 
 position: absolute;
@@ -13,7 +14,6 @@ top: 16px;
 
 background: #009EFF;
 border-radius: 2px;
-
 
 `
 
@@ -67,18 +67,27 @@ text-align: center;
 color: #FFFFFF;
 `
 
-class NavigationBar extends React.Component<any,any>  {
-	public render():JSX.Element{
+const NavigationBar = ()  =>{
+
+const plain = useAppSelector(state=>state.toggleState.plain)
+const dispatch = useAppDispatch()
+const onPlainSelected = function(){
+	dispatch(setPlain(true))
+}
+const onEncSelected = function(){
+	dispatch(setPlain(false))
+}
+
 		return(
 		<nav className="navbar">
   			<img className="logo"src={logo}/>
 			<ButtonGroup>
-			  <ToggleButton active = {true} ></ToggleButton>
-			  <EncryptedButton>Encrypted</EncryptedButton>
-			  <PlainButton>b-&+(2'</PlainButton>
+			  <ToggleButton active = {plain}></ToggleButton>
+			  <EncryptedButton onClick={onEncSelected}>Encrypted</EncryptedButton>
+			  <PlainButton onClick={onPlainSelected}>b-&+(2'</PlainButton>
 			</ButtonGroup>  		</nav>
   		)
 	}
-}
+
 
 export default NavigationBar
