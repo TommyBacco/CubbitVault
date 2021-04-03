@@ -2,7 +2,7 @@ import './afterUpload.css'
 import fileLogo from '../assets/FilesWhite.svg';
 import {useAppSelector,useAppDispatch} from "../hooks";
 import { setSelected, setErrors, setFileUrl, setFileName, setMime, setUploading, setKey } from '../features/fileSlice'
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const AfterUpload = () =>  {
 
@@ -20,12 +20,17 @@ return(
 		</div>
 		<h2 id="fileId">Your file id:</h2>
 		<div id="idInput" className="inputs">
+		<CopyToClipboard text={uuid}>
 			<button className="copyButton" id="copy1"><p className="copyText">Copy</p></button>
+		</CopyToClipboard>
 			<p id="textId">{uuid}</p>
 		</div>
 			<h2 id="encKey">Your encryption key:</h2>
 		<div className="inputs" id="keyInput">
+		<CopyToClipboard text={key}>
 			<button className="copyButton" id="copy2"><p className="copyText">Copy</p></button>
+		</CopyToClipboard>
+
 			<p id="keyId">{key}</p>
 		</div>
 		</div>

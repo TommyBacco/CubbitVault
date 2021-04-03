@@ -8,6 +8,8 @@ import styled, { css } from 'styled-components';
 import {convertWordArrayToUint8Array, downloadFile} from './functions'
 import {useAppSelector,useAppDispatch} from "../hooks";
 import { setSelected, setErrors, setFileUrl, setFileName, setMime, setUploading, setUuid, setKey, setLoading  } from '../features/fileSlice'
+import {setDownloadPressed} from '../features/fileDownloadSlice'
+
 const CryptoJS = require("crypto-js")
 const keygen = require("keygenerator");
 
@@ -21,7 +23,6 @@ const dispatch = useAppDispatch()
 
 const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>)=> {
         
-		const key = keygen._();
         e.preventDefault()
         const fileList = e.target.files;
         
@@ -36,10 +37,15 @@ const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>)=> {
     }
 }
 
-const uploadFile =  function ()  {
+const download = function(){
+	dispatch(setDownloadPressed(true))
+}
+
+const uploadFile =  async  () => {
  	
  	try{
-        if (fileSelected) {
+        if (fileSelected){
+
         	dispatch(setLoading(true))
         	dispatch(setSelected(false))
         	const key = keygen._();
@@ -49,12 +55,8 @@ const uploadFile =  function ()  {
 	        var encrypted  = CryptoJS.AES.encrypt(wordArray, key).toString();        // Encryption: I: WordArray -> O: -> Base64 encoded string (OpenSSL-format)
 	        dispatch(setKey(key))
 		  	dispatch(setFileUrl(encrypted));
-		  	}
-		  	fetch(fileUrl).then(r => r.blob()).then((blob)=>{
-		  		reader.readAsArrayBuffer(blob);
-		  	});
-            const formData = new FormData();
-            formData.append("file", new Blob([fileUrl]));
+		  	const formData = new FormData();
+            formData.append("file", new Blob([encrypted]));
             fetch("http://localhost:5000/v1/files", {
 				method: "POST",
 				headers: {
@@ -68,7 +70,13 @@ const uploadFile =  function ()  {
 				dispatch(setUuid(text))
 				dispatch(setLoading(false))
 				dispatch(setUploading(true))
-			})
+				})
+		  	}
+		  	const response = await fetch(fileUrl)
+		  	const blob = await response.blob()
+		  	reader.readAsArrayBuffer(blob);
+		  
+           
         }
     }catch(e){
     		throw(e)
@@ -98,7 +106,7 @@ return(
 		</div>
 		<div className="actions">
 			<button type="button" onClick={ uploadFile} className="encrypt"><p className="upload">Encrypt and upload</p></button>
-			<button type="button" onClick={downloadFile} className="decrypt"><p className="download">Download and decrypt</p></button>
+			<button type="button" onClick={download} className="decrypt"><p className="download">Download and decrypt</p></button>
 		</div>
 		<h2 className="footText">q&apos;$=6&apos;.+$=(2=-$5$1=3&apos;$=24,=.%=3&apos;$=/ 132=J=(3=(2=&amp;1$ 3$1=.1=+$22$1I=#$/$-#(-&amp;=.-=&apos;.6=6$++=3&apos;$=(-#(5(#4 +2=6.1*=3.&amp;$3&apos;$1</h2>
 		</div>

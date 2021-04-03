@@ -1,0 +1,130 @@
+
+h2{
+	/* p_standard */
+font-family: Nunito;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 26px;
+color: #FFFFFF;
+white-space: nowrap;
+display: flex;
+align-items: center;
+text-align: center;
+}
+
+p{
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+display: flex;
+align-items: center;
+justify-content: center;
+
+font-family: Nunito;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 26px;
+color: #FFFFFF;
+/* or 162% */
+}
+.fileData{
+background: #292929;
+border: 1px solid #363636;
+box-sizing: border-box;
+border-radius: 3px;
+}
+#input1{
+position: absolute;
+width: 320px;
+height: 30px;
+left: 596px;
+top: 368px;
+}
+#input2{
+position: absolute;
+width: 320px;
+height: 30px;
+left: 596px;
+top: 405px;
+}
+#fileid{
+position: absolute;
+left: 37.08%;
+right: 59.51%;
+top: 36.71%;
+bottom: 60.71%;
+
+}
+#fileName{
+position: absolute;
+left: 35.21%;
+right: 59.51%;
+top: 40.48%;
+bottom: 56.94%;
+}
+#input3{
+position: absolute;
+width: 320px;
+height: 30px;
+left: 596px;
+top: 442px;
+}
+#input4{
+position: absolute;
+width: 320px;
+height: 30px;
+left: 596px;
+top: 479px;
+}
+#input5{
+position: absolute;
+width: 409px;
+height: 48px;
+left: 507px;
+top: 613px;
+font-family: Nunito;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 26px;
+color: #FFFFFF;
+display: flex;
+justify-content: center;
+text-align: center;
+}
+#fileSize{
+position: absolute;
+left: 36.11%;
+right: 59.51%;
+top: 44.25%;
+bottom: 53.17%;
+}
+#fileMime{
+position: absolute;
+left: 35.21%;
+right: 59.51%;
+top: 48.02%;
+bottom: 49.4%;
+}
+#insert{
+position: absolute;
+left: 43.4%;
+right: 43.4%;
+top: 56.65%;
+bottom: 40.77%;
+}
+#button{
+position: absolute;
+width: 216px;
+height: 48px;
+left: 612px;
+top: 696px;
+background: #FFA047;
+border-radius: 3px;
+border:0px;
+
+}

@@ -3,6 +3,7 @@ import thunk, {ThunkMiddleware} from 'redux-thunk'
 import {composeWithDevTools} from "redux-devtools-extension"
 import {createLogger} from 'redux-logger';
 import fileSliceReducer from './features/fileSlice'
+import fileDownloadReducer from './features/fileDownloadSlice'
 import { configureStore, Action } from "@reduxjs/toolkit";
 
 
@@ -12,8 +13,7 @@ const logger = createLogger();
 const store = configureStore({
   reducer: {
     fileState: fileSliceReducer,
-    // anyOtherStore: anyOtherSlice,
-    // middleware: ['array of middlewares'],
+    fileDownloadState : fileDownloadReducer
   },
 });
 

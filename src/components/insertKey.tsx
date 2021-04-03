@@ -1,0 +1,46 @@
+import './insertKey.css'
+import {convertWordArrayToUint8Array} from "./functions"
+import {useAppSelector,useAppDispatch} from "../hooks";
+
+const CryptoJS = require("crypto-js")
+
+const InsertKey = () =>  {
+
+const uuid = useAppSelector((state)=>state.fileDownloadState.uuid)
+
+const  getFileData= async ()=>{
+	 const response = await fetch("http://localhost:5000/v1/files", { method: "GET", headers: {'uuid':uuid }})
+	 const blob = await response.blob();
+
+    var reader = new FileReader();
+    reader.onload = () => {
+    var key = "JFhLOVAoE4jma12YJEhtGjywLh6PE8yS";  
+
+    var decrypted = CryptoJS.AES.decrypt(reader.result, key);               // Decryption: I: Base64 encoded string (OpenSSL-format) -> O: WordArray
+    var typedArray = convertWordArrayToUint8Array(decrypted);               // Convert: WordArray -> typed array
+    var fileDec = new Blob([typedArray]);
+    saveAs(fileDec, "alpha.pdf");  
+}
+    reader.readAsText(blob);
+
+}
+
+return(
+	<div>
+		<div className="fileData" id="input1"></div>
+		<h2 id="fileid">File id:</h2>
+		<div className="fileData" id="input2"></div>
+		<h2 id="fileName">File name:</h2>
+		<div className="fileData" id="input3"></div>
+		<h2 id="fileSize">File size:</h2>
+		<div className="fileData" id="input4"></div>
+		<h2 id="fileMime">File mime:</h2>
+		<h2 id="insert">Insert your encryption key:</h2>
+		<input type="text"className="fileData" id="input5"></input>
+		<button id="button"><p>Decrypt and download</p></button>
+	</div>
+		)
+	}
+
+
+export default InsertKey
