@@ -40,6 +40,7 @@ app.use(function(req, res, next) {
    next(); 
 }); 
 
+
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -50,14 +51,18 @@ app.listen(PORT, () => {
 
 app.get('/v1/data/', (req,res)=>{
 
+
   const readMetadata = "SELECT * FROM FilesTable WHERE UUID = unhex(replace(?,'-',''))"
   db.query(readMetadata, [req.header("uuid")], (err, response)=>{
-    if(err){response.send(err)}else {
-      console.log(response)
+    if(err){response.send(err)}else if(response.length > 0){
       res.send({
         'filename':response[0].Path,
         'mime':response[0].Mime,
         'size':response[0].Size
+      })
+    }else{
+      res.send({
+        'filename':'not-found'
       })
     }
   })
