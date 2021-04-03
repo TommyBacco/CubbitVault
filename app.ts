@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
     cb(null, 'upload/');
   },
   filename: function(req, file, cb) {
-    cb(null, file.originalname);
+    cb(null, req.headers.filename + ".enc");
   }
 });
 const upload = multer({ storage: storage });
@@ -44,8 +44,6 @@ app.use(function(req, res, next) {
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.get('/', (req,res) => res.send('Express + TypeScript Server'));
-
 app.listen(PORT, () => {
   console.log('⚡️[server]: Server is running at https://localhost:' + PORT);
 });
@@ -63,16 +61,18 @@ app.get('/v1/files', (req,res)=> {
 
 app.post('/v1/files', upload.single("file") ,(req, res, next) => {
 	if(!req.file){console.log("fallito")}else{console.log("File salvato in " + req.file.path)}
-	var uuid1 = uuidv1()	
-	const queryInsert = "INSERT INTO FilesTable(UUID,Path,Size) VALUES(unhex(replace(?,'-','')), ?,?)"
-    db.query(queryInsert, [uuid1, req.file.path, req.file.size], (err, res) => {
+	var uuid1 = uuidv1()
+	console.log(uuid1)	
+	const queryInsert = "INSERT INTO FilesTable(UUID,Path,Size, Mime) VALUES(unhex(replace(?,'-','')), ?,?,?)"
+    db.query(queryInsert, [uuid1, req.headers.filename, req.file.size, req.header('mimeType')], (err, res) => {
       if (err) throw err;
    });
     const queryProva = "SELECT * FROM FilesTable WHERE UUID = (unhex(replace(?,'-','')));"
     db.query(queryProva, [uuid1], (err,res) => {
     	if(err) throw err;
     	console.log(res[0])
-    	
     })
+    res.send(uuid1)
+    console.log(JSON.stringify(req.headers));
 	next()
 });
