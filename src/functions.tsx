@@ -19,25 +19,6 @@ export function convertWordArrayToUint8Array(wordArray : any) {
 }
 
 
-export const downloadFile = async () =>{
-
-	const response = await fetch("http://localhost:5000/v1/files")
-	const blob = await response.blob();
-
-    var reader = new FileReader();
-    reader.onload = () => {
-    var key = "WrfU5z8AkC8etxP9BrN1elIblwNkNoun";  
-
-    var decrypted = CryptoJS.AES.decrypt(reader.result, key);               // Decryption: I: Base64 encoded string (OpenSSL-format) -> O: WordArray
-    var typedArray = convertWordArrayToUint8Array(decrypted);               // Convert: WordArray -> typed array
-    var fileDec = new Blob([typedArray]);
-    saveAs(fileDec, "Lola.png");  
-}
-    reader.readAsText(blob);
-}
-
-
-
 
 
 

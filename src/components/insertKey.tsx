@@ -1,7 +1,8 @@
 import './insertKey.css'
-import {convertWordArrayToUint8Array} from "./functions"
+import {convertWordArrayToUint8Array} from "../functions"
 import {useAppSelector,useAppDispatch} from "../hooks";
 import {setKey} from '../features/fileDownloadSlice'
+import { saveAs } from 'file-saver';
 const CryptoJS = require("crypto-js")
 
 const InsertKey = () =>  {

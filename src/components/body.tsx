@@ -5,11 +5,11 @@ import divider from '../assets/Divider.svg';
 import arrow from '../assets/ArrowDown.svg';
 import './body.css'
 import styled, { css } from 'styled-components';
-import {convertWordArrayToUint8Array, downloadFile} from './functions'
+import {convertWordArrayToUint8Array} from '../functions'
 import {useAppSelector,useAppDispatch} from "../hooks";
 import { setSelected, setErrors, setFileUrl, setFileName, setMime, setUploading, setUuid, setKey, setLoading  } from '../features/fileSlice'
 import {setDownloadPressed} from '../features/fileDownloadSlice'
-
+import Dropzone from 'react-dropzone';
 const CryptoJS = require("crypto-js")
 const keygen = require("keygenerator");
 
@@ -35,6 +35,28 @@ const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>)=> {
 		  	const fileUrl =  window.URL.createObjectURL(file);
 		  	dispatch(setFileUrl(fileUrl))
     }
+}
+
+const dragOver = function(e:React.DragEvent<HTMLDivElement>){
+	e.preventDefault()
+}
+
+const onFilesDrop = function (e:React.DragEvent<HTMLDivElement>){
+	e.preventDefault()
+	const fileList = e.dataTransfer.items
+	const myFile =  fileList[0].getAsFile()
+
+
+	if(myFile){
+		dispatch(setFileName(myFile.name))
+        dispatch(setSelected(true));
+        dispatch(setMime(myFile.type))
+	  	const file = fileList[0]; 
+	  	const fileUrl =  window.URL.createObjectURL(myFile);
+	  	dispatch(setFileUrl(fileUrl))
+	  }
+	
+
 }
 
 const download = function(){
@@ -88,7 +110,7 @@ return(
 		<div>
 		<h3 className="h3">^#5 -&quot;$#=.-+(-$=%(+$=$-&quot;18/3(.-= -#=#$&quot;18/3(.-K=p$&quot;41$= -8=%(+$=38/$= -#=, (-3 (-=8.41=/1(5 &quot;8&gt;</h3>
 		<div className="dropzone_large">
-			<div className="backGround_drop" >
+			<div onDrop={onFilesDrop}  className="backGround_drop" onDragOver={dragOver}>
 				 <input accept="*"
 				   id="file" multiple={true} type="file" name="file"
 				   onChange={(e) => handleInputChange(e)} hidden/>
@@ -100,7 +122,7 @@ return(
 				</label>
 				{fileSelected && <h2 className="dropText">{fileName}</h2>}
 			</div>
-				{fileSelected ? null:<h2 className="dropText">or drop a file here</h2>}
+			{fileSelected ? null:<h2 className="dropText">or drop a file here</h2>}
 			<img src={fileLogo} className="fileLogo" hidden={fileSelected ? false:true}/>
 
 		</div>
