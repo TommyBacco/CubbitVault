@@ -1,0 +1,160 @@
+#borderBox{
+position: absolute;
+width: 552px;
+height: 120px;
+left: 444px;
+margin-top: 25px;
+top: 288px;
+border: 1px solid #363636;
+box-sizing: border-box;
+border-radius: 3px;
+}
+
+#fileLogo{
+position: absolute;
+left: 27%;
+top: 4.17%;
+
+}
+
+#logoText{
+position: absolute;
+left: 39.86%;
+right: 39.86%;
+top: 13.33%;
+bottom: 13.33%;
+}
+
+#fileId{
+position: absolute;
+left: 47.08%;
+right: 47.36%;
+top: 44.35%;
+bottom: 53.08%;
+display: flex;
+align-items: center;
+text-align: center;
+justify-content: center;
+color: #FFFFFF;
+}
+
+h2{
+	/* p_standard */
+font-family: Nunito;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 26px;
+}
+
+p{
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+display: flex;
+align-items: center;
+
+
+font-family: Nunito;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 26px;
+color: #FFFFFF;
+/* or 162% */
+}
+
+#h2{
+position: absolute;
+left: 0%;
+right: 0%;
+top: 70.45%;
+bottom: 0%;
+/* identical to box height, or 162% */
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.inputs{
+background: #292929;
+border: 1px solid #363636;
+box-sizing: border-box;
+border-radius: 3px;
+}
+
+#idInput{
+position: absolute;
+width: 552px;
+height: 48px;
+left: 443px;
+top: 490px;
+
+}
+
+.copyButton{
+background: #009EFF;
+border-radius: 3px;
+width: 116px;
+border: 0px;
+}
+
+#copy1{
+position: absolute;
+left: 77.9%;
+right: 1.09%;
+top: 12.5%;
+bottom: 12.5%;
+}
+
+#copy2{
+position: absolute;
+left: 77.9%;
+right: 1.09%;
+top: 12.5%;
+bottom: 12.5%;
+}
+#textId{
+position: absolute;
+left: 5.8%;
+right: 27.9%;
+top: 0%;
+bottom: 0%;
+}
+#keyId{
+position: absolute;
+left: 5.8%;
+right: 27.9%;
+top: 0%;
+bottom: 0%;
+}
+
+.copyText{
+	display: flex;
+	justify-content: center;
+}
+#encKey{
+position: absolute;
+left: 44.79%;
+right: 45.14%;
+top: 58.63%;
+bottom: 38.79%;
+display: flex;
+align-items: center;
+text-align: center;
+justify-content: center;
+color: #FFFFFF;
+}
+
+#keyInput{
+	position: absolute;
+width: 552px;
+height: 48px;
+left: 443px;
+top: 634px;
+}

@@ -11,7 +11,7 @@ const logger = createLogger();
 
 const store = configureStore({
   reducer: {
-    fileStore: fileSliceReducer,
+    fileState: fileSliceReducer,
     // anyOtherStore: anyOtherSlice,
     // middleware: ['array of middlewares'],
   },

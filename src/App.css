@@ -1,6 +1,78 @@
 #content {
+  position: relative;
  height: 1008px;
  width: 1440px;
 background: #161616;
 }
 
+.h2{
+
+position: absolute;
+height: 47px;
+left: 7.85%;
+right: 7.89%;
+top: 216px;
+/* h2 */
+font-family: Nunito;
+font-style: normal;
+font-weight: 900;
+font-size: 36px;
+line-height: 47px;
+
+/* identical to box height, or 130% */
+display: flex;
+justify-content: center;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.footText{
+	/* Caption */
+
+position: absolute;
+left: 15.28%;
+right: 17.5%;
+top: 88.59%;
+bottom: 2.38%;
+
+/* p_medium */
+font-family: Nunito;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 23px;
+/* or 162% */
+display: flex;
+align-items: flex-end;
+text-align: center;
+justify-content: center;
+
+color: #98A0A6;
+
+}
+
+#animation{
+position: absolute;
+width: 80px;
+height: 80px;
+left: 680px;
+top: 428px;
+pointer-events: none;
+
+background: #FFA047;
+}
+
+@keyframes load-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  #animation {
+    animation: load-spin infinite 5s linear;
+  }
+}

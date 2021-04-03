@@ -7079,6 +7079,11 @@
     "array-includes" "^3.1.2"
     "object.assign" "^4.1.2"
 
+"keygenerator@^1.0.4":
+  "integrity" "sha1-SsiEgny/OxU2NrtUJe/lgx+f6K0="
+  "resolved" "https://registry.npmjs.org/keygenerator/-/keygenerator-1.0.4.tgz"
+  "version" "1.0.4"
+
 "killable@^1.0.1":
   "integrity" "sha512-LzqtLKlUwirEUyl/nicirVmNiPvYs7l5n8wOPP7fyJVpUPkvCnW/vuiXGpylGUlnPDnB7311rARzAt3Mhswpjg=="
   "resolved" "https://registry.npmjs.org/killable/-/killable-1.0.1.tgz"
