@@ -26,7 +26,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-export const db = mysql.createConnection({
+const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "articolo31",
