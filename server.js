@@ -5,7 +5,7 @@ const mysql = require("mysql2");
 const bodyParser = require('body-parser');
 const { v1: uuidv1 } = require('uuid');
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 const path = require('path');
 
 const storage = multer.diskStorage({
