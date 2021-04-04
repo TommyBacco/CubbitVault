@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const dotenv = require("dotenv");
 const { v1: uuidv1 } = require('uuid');
 const app = express();
-const PORT = process.env.port || 5000;
+const PORT = 5000;
 const path = require('path');
 
 const storage = multer.diskStorage({
