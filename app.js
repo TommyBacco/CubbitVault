@@ -3,11 +3,9 @@ const cors = require('cors');
 const multer = require('multer');
 const mysql = require("mysql2");
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const dotenv = require("dotenv");
 const { v1: uuidv1 } = require('uuid');
 const app = express();
-const PORT = 5000;
+const PORT = 8080;
 const path = require('path');
 
 const storage = multer.diskStorage({
@@ -20,17 +18,15 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-dotenv.config();
 app.use(cors()); 
-app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
+  host: "aacv983uhysktq.cldpucslkked.eu-west-3.rds.amazonaws.com",
+  user: "bacco",
   password: "articolo31",
-  database: "FileStorage",
+  database: "ebdb",
 });
 
 app.use(function(req, res, next) { 
@@ -46,7 +42,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.listen(PORT, () => {
-  console.log('⚡️[server]: Server is running at port' + PORT);
+  console.log('Server is running at port' + PORT);
 });
 
 app.get('/', (req,res)=>{
