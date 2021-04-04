@@ -5,7 +5,7 @@ height: 88px;
 left: 412px;
 top: 64px;
 }
-#input{
+.input{
 
 position: absolute;
 width: 264px;
@@ -14,6 +14,14 @@ left: calc(50% - 264px/2);
 top: calc(50% - 48px/2 - 12px);
 background: #FFFFFF;
 border-radius: 3px;
+}
+
+#buttonOverDiv{
+z-index:8;
+opacity: 0%
+}
+#divUnderButton{
+z-index:5;
 }
 
 #file{

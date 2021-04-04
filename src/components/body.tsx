@@ -25,7 +25,6 @@ const dispatch = useAppDispatch()
 
 const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>)=> {
         
-        e.preventDefault()
         const fileList = e.target.files;
         
         if(fileList){
@@ -110,14 +109,15 @@ return(
 			<div id="dropzone_large">
 				<div onDrop={onFilesDrop}  id="backGround_drop" onDragOver={dragOver}>
 					 <input accept="*"
-					   id="file" multiple={true} type="file" name="file"
+					   id="file" multiple={false} type="file" name="file"
 					   onChange={(e) => handleInputChange(e)} hidden/>
-					<label htmlFor="file" id="input" hidden={fileSelected ? true:false}>
+					<label htmlFor="file" className="input"  id="buttonOverDiv"></label>
+					<div className="input" id ="divUnderButton" hidden={fileSelected ? true:false}>
 						<img src={logo} id="file" alt=""/>
 						<p id="textUpload">{decipherCubbit("fullstack",buttonText, plain)}</p>
 						<img src={divider} id="solid" alt=""></img>
 						<img src={arrow} id="arrow" alt=""></img>
-					</label>
+					</div>
 					<div id="withFile">
 						<img src={fileLogo} id="fileLogo" hidden={fileSelected ? false:true} alt=""/>
 						{fileSelected && <h2 id="dropText">{fileName}</h2>}
