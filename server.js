@@ -36,8 +36,9 @@ app.use(function(req, res, next) {
    next(); 
 }); 
 
-
-
+app.post('/prova', (req,res)=>{
+  res.send("prova arrivata")
+})
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
 
