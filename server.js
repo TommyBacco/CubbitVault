@@ -47,7 +47,7 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req,res)=>{
-  res.send("You're in!")
+  res.send("Server is running at port ' + " + PORT)
 })
 
 app.get('/v1/data/', (req,res)=>{
