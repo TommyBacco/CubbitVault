@@ -1,8 +1,6 @@
 import './insertId.css'
-import fileLogo from '../assets/FilesWhite.svg';
 import {useAppSelector,useAppDispatch} from "../hooks";
-import { setUuid, setKey,setMime, setName, setSize, setFileidInserted, setDownloadPressed} from '../features/fileDownloadSlice'
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { setUuid,setMime, setName, setSize, setFileidInserted, setDownloadPressed} from '../features/fileDownloadSlice'
 
 
 const InsertId = () =>  {
@@ -18,7 +16,7 @@ const getMetadata = function (){
 	fetch("http://localhost:5000/v1/data", { method: "GET", headers: {'uuid':uuid }})
 		.then((res)=>res.json()).then((json)=>{
 
-	if(json['filename'] != 'not-found'){
+	if(json['filename'] !== 'not-found'){
 		dispatch(setMime(json['mime']))
 		dispatch(setName(json['filename']))
 		dispatch(setSize(json['size']))

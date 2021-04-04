@@ -1,9 +1,10 @@
-import React, {Component} from 'react'
+import React from 'react'
 import logo from '../assets/LogoAndBrand.svg';
 import './navBar.css'
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import {useAppSelector,useAppDispatch} from "../hooks";
 import {setPlain} from '../features/toggleSlice'
+import {decipherCubbit} from "../functions"
 const ButtonGroup = styled.div`
 
 position: absolute;
@@ -80,11 +81,11 @@ const onEncSelected = function(){
 
 		return(
 		<nav className="navbar">
-  			<img className="logo"src={logo}/>
+  			<img id="logo"src={logo} alt=""/>
 			<ButtonGroup>
 			  <ToggleButton active = {plain}></ToggleButton>
 			  <EncryptedButton onClick={onEncSelected}>Encrypted</EncryptedButton>
-			  <PlainButton onClick={onPlainSelected}>b-&+(2'</PlainButton>
+			  <PlainButton onClick={onPlainSelected}>{decipherCubbit("fullstack","b-&+(2'", plain)}</PlainButton>
 			</ButtonGroup>  		</nav>
   		)
 	}

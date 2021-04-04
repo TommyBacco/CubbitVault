@@ -1,7 +1,6 @@
 import './afterUpload.css'
 import fileLogo from '../assets/FilesWhite.svg';
-import {useAppSelector,useAppDispatch} from "../hooks";
-import { setSelected, setErrors, setFileUrl, setFileName, setMime, setUploading, setKey } from '../features/fileSlice'
+import {useAppSelector} from "../hooks";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const AfterUpload = () =>  {
@@ -14,7 +13,7 @@ return(
 		<div>
 		<div id="borderBox">
 		<div id="logoText">
-			<img src={fileLogo} id="fileLogo"/>
+			<img src={fileLogo} id="fileLogo" alt=""/>
 			<h2 id="h2">{fileName}</h2>
 		</div>
 		</div>

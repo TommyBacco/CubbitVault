@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../store'
 
 
 export interface FileState{
@@ -7,7 +6,6 @@ export interface FileState{
 	fileName:string
 	mimeType:string
 	selected: boolean
-	errors:string
 	uploading:boolean
 	loading:boolean
 	uuid:string
@@ -19,7 +17,6 @@ const initialState:FileState = {
 	fileName:"",
 	mimeType:"",
 	selected:false,
-	errors:"",
 	uploading:false,
 	loading:false,
 	uuid:"",
@@ -32,9 +29,6 @@ const fileSlice = createSlice({
 	reducers:{
 		setSelected:(state, {payload}:PayloadAction<boolean>)=>{
 			state.selected=payload;
-		},
-		setErrors:(state, {payload}:PayloadAction<string>)=>{
-			state.errors=payload;
 		},
 		setFileUrl:(state, {payload}:PayloadAction<string>)=>{
 			state.fileUrl=payload;
@@ -60,7 +54,7 @@ const fileSlice = createSlice({
 	},
 });
 
-export const { setSelected, setErrors, setFileUrl, setFileName, setMime, setUploading, setUuid, setKey, setLoading } = fileSlice.actions;
+export const { setSelected, setFileUrl, setFileName, setMime, setUploading, setUuid, setKey, setLoading } = fileSlice.actions;
 export default fileSlice.reducer
 export const fileSelector = (state: { fileState: FileState }) =>
   state.fileState;
