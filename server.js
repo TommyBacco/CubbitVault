@@ -26,11 +26,11 @@ const upload = multer({ storage: multerS3({
     bucket: BUCKET_NAME,
     Key: function (req, file, cb) {
         console.log(file)
-        cb(null, "path.txt")
+        cb(null, req.headers.file)
     },
     key: function (req, file, cb) {
         console.log(file)
-        cb(null, req.headers.filename)
+        cb(null, req.headers.file)
     },
     })
 });
@@ -99,9 +99,7 @@ app.get('/v1/files', (req,res)=> {
 
       const params = {
           Bucket: BUCKET_NAME,  
-          Key: response[0]['Path'],
-          key: response[0]['Path']  
-};
+          Key: response[0]['Path']};
 
 s3.getObject(params, function (err, data) {
                 if (err) {
