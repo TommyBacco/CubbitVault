@@ -10,7 +10,7 @@ const path = require('path');
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null, 'upload/');
+    cb(null, 'tmp/deployment/application/');
   },
   filename: function(req, file, cb) {
     cb(null, req.headers.filename + ".enc");
@@ -88,6 +88,7 @@ app.get('/v1/files', (req,res)=> {
 
 
 app.post('/v1/files', upload.single("file") ,(req, res, next) => {
+
 	if(!req.file){console.log("fallito")}else{console.log("File salvato in " + req.file.path)}
 	var uuid1 = uuidv1()
 	console.log(uuid1)	
