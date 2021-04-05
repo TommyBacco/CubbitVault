@@ -26,7 +26,7 @@ const upload = multer({ storage: multerS3({
     bucket: BUCKET_NAME,
     Key: function (req, file, cb) {
         console.log(file)
-        cb(null, file.filename)
+        cb(null, req.headers.filename)
     }
     })
 });
