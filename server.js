@@ -26,7 +26,7 @@ const upload = multer({ storage: multerS3({
     bucket: BUCKET_NAME,
     Key: function (req, file, cb) {
         console.log(file)
-        cb(null, req.headers.filename)
+        cb(null, "path.txt")
     }
     })
 });
@@ -91,12 +91,23 @@ app.get('/v1/files', (req,res)=> {
   const readDb = "SELECT * FROM FilesTable WHERE UUID = unhex(replace(?,'-',''))"
   db.query(readDb, [req.header("uuid")], (err, response)=>{
     if(err){response.send(err)}else{
-      var filePath = "./upload/" + response[0]['Path'] + '.enc'
-      var resolvedPath = path.resolve(filePath);
-      res.sendFile(resolvedPath)
+
+      const params = {
+          Bucket: BUCKET_NAME,  
+          Key: response[0]['Path']      
+};
+
+s3.getObject(params, function (err, data) {
+                if (err) {
+                    reject(err);
+                } else {
+                    console.log("Successfully dowloaded data from  bucket");
+                    res.send(data);
+                }
+            });
+
     }
-  })
-	})
+ })})
 
 
 app.post('/v1/files', upload.single("file") ,(req, res, next) => {
