@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 8080;
 const path = require('path');
 const AWS = require('aws-sdk');
 const multerS3 = require('multer-s3')
-AWS.config.update({region: 'us-west-3'});
 const BUCKET_NAME = "cubbit-vault";
 const IAM_USER_KEY = "AKIAWXUGRUSNBQFNLWEZ";
 const IAM_USER_SECRET = "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";
@@ -100,23 +99,6 @@ app.get('/v1/files', (req,res)=> {
 
 
 app.post('/v1/files', upload.single("file") ,(req, res, next) => {
-
-  var fileStream = fs.createReadStream(req.file);
-  fileStream.on('error', function(err) {
-  console.log('File Error', err);
-    });
-  uploadParams.Body = fileStream;
-  var path = require('path');
-  uploadParams.Key = path.basename(req.headers.filename);
-  s3.upload (uploadParams, function (err, data) {
-  if (err) {
-    res.send(err)
-  } if (data) {
-    console.log("Upload Success", data.Location);
-  }
-});
-
-  res.send("Loaded to s3")
 
   
 	if(!req.file){console.log("fallito")}else{console.log("File salvato in " + req.file.path)}
