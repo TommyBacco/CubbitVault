@@ -37,7 +37,7 @@ const storage = multer.diskStorage({
     cb(null, req.headers.filename + ".enc");
   }
 });
-const upload = multer({ storage: storage });
+const upload = multer();
 
 app.use(cors()); 
 app.use(express.json());
