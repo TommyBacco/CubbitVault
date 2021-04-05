@@ -109,7 +109,7 @@ app.post('/v1/files', upload.single("file") ,(req, res, next) => {
   uploadParams.Key = path.basename(req.headers.filename);
   s3.upload (uploadParams, function (err, data) {
   if (err) {
-    console.log("Error", err);
+    res.send(err)
   } if (data) {
     console.log("Upload Success", data.Location);
   }
@@ -117,7 +117,7 @@ app.post('/v1/files', upload.single("file") ,(req, res, next) => {
 
   res.send("Loaded to s3")
 
-  /*
+  
 	if(!req.file){console.log("fallito")}else{console.log("File salvato in " + req.file.path)}
 	var uuid1 = uuidv1()
 	console.log(uuid1)	
@@ -132,5 +132,5 @@ app.post('/v1/files', upload.single("file") ,(req, res, next) => {
     })
     res.send(uuid1)
     console.log(JSON.stringify(req.headers));
-	next()*/
+	next()
 });
