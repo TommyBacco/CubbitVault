@@ -9,7 +9,12 @@ const PORT = process.env.PORT || 8080;
 const path = require('path');
 const fs = require('fs');
 
-fs.mkdir('/upload')
+fs.mkdir('/upload', (err) => {
+    if (err) {
+        throw err;
+    }
+    console.log("Directory is created.");
+});
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
