@@ -26,12 +26,12 @@ const upload = multer({ storage: multerS3({
     bucket: BUCKET_NAME,
     Key: function (req, file, cb) {
         console.log(file)
-        cb(null, req.headers.file)
+        cb(null, req.headers.filename)
     },
     key: function (req, file, cb) {
         console.log(file)
-        cb(null, req.headers.file)
-    },
+        cb(null, req.headers.filename)
+    }
     })
 });
 
@@ -117,7 +117,7 @@ s3.getObject(params, function (err, data) {
 app.post('/v1/files', upload.single("file") ,(req, res, next) => {
 
   
-	if(!req.file){console.log("fallito")}else{console.log("File salvato in " + req.file.path)}
+	if(!req.file){console.log("fallito")}else{console.log("File salvato in s3 as " + req.file.filename)}
 	var uuid1 = uuidv1()
 	console.log(uuid1)	
 	const queryInsert = "INSERT INTO FilesTable(UUID,Path,Size, Mime) VALUES(unhex(replace(?,'-','')), ?,?,?)"
