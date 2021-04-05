@@ -11,27 +11,26 @@ const key = useAppSelector(state=>state.fileState.key)
 
 return(
 		<div>
-		<div id="borderBox">
-		<div id="logoText">
-			<img src={fileLogo} id="fileLogo" alt=""/>
-			<h2 id="h2">{fileName}</h2>
-		</div>
-		</div>
-		<h2 id="fileId">Your file id:</h2>
-		<div id="idInput" className="inputs">
-		<CopyToClipboard text={uuid}>
-			<button className="copyButton" id="copy1"><p className="copyText">Copy</p></button>
-		</CopyToClipboard>
-			<p id="textId">{uuid}</p>
-		</div>
+			<div id="borderBox">
+				<div id="logoText">
+					<img src={fileLogo} id="fileLogo" alt=""/>
+					<p id="filename">{fileName}</p>
+				</div>
+			</div>
+			<h2 id="fileId">Your file id:</h2>
+			<div id="idInput" className="inputs">
+				<CopyToClipboard text={uuid}>
+					<button className="copyButton" id="copy1"><p className="copyText">Copy</p></button>
+				</CopyToClipboard>
+					<p id="textId">{uuid}</p>
+			</div>
 			<h2 id="encKey">Your encryption key:</h2>
-		<div className="inputs" id="keyInput">
-		<CopyToClipboard text={key}>
-			<button className="copyButton" id="copy2"><p className="copyText">Copy</p></button>
-		</CopyToClipboard>
-
-			<p id="keyId">{key}</p>
-		</div>
+			<div className="inputs" id="keyInput">
+				<CopyToClipboard text={key}>
+					<button className="copyButton" id="copy2"><p className="copyText">Copy</p></button>
+				</CopyToClipboard>
+				<p id="keyId">{key}</p>
+			</div>
 		</div>
 		)
 	}

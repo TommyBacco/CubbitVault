@@ -73,13 +73,13 @@ const uploadFile =  async  () => {
     	const key = keygen._();
     	const reader = new FileReader();
     	reader.onload = () => {
-        var wordArray = CryptoJS.lib.WordArray.create(reader.result);           // Convert: ArrayBuffer -> WordArray
-        var encrypted  = CryptoJS.AES.encrypt(wordArray, key).toString();        // Encryption: I: WordArray -> O: -> Base64 encoded string (OpenSSL-format)
+        var wordArray = CryptoJS.lib.WordArray.create(reader.result);           
+        var encrypted  = CryptoJS.AES.encrypt(wordArray, key).toString();        
         dispatch(setKey(key))
 	  	dispatch(setFileUrl(encrypted));
 	  	const formData = new FormData();
         formData.append("file", new Blob([encrypted]));
-        fetch("http://localhost:5000/v1/files", {
+        fetch("http://cubbitvault-env.eba-humyr29r.eu-west-3.elasticbeanstalk.com/v1/files", {
 			method: "POST",
 			headers: {
 				'Accept':'application/json',

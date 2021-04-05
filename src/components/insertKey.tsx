@@ -20,7 +20,8 @@ const handleChange = function(e:React.ChangeEvent<HTMLInputElement>){
 
 const  getFileData= async ()=>{
 
-	const response = await fetch("http://localhost:5000/v1/files", { method: "GET", headers: {'uuid':uuid }})
+	const response = await fetch("http://cubbitvault-env.eba-humyr29r.eu-west-3.elasticbeanstalk.com/v1/files", { method: "GET", headers: {'uuid':uuid }})
+
 	const blob = await response.blob();
     var reader = new FileReader();
 

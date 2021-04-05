@@ -13,7 +13,7 @@ const onChange = function (e:React.ChangeEvent<HTMLInputElement>) {
 }
 
 const getMetadata = function (){
-	fetch("http://localhost:5000/v1/data", { method: "GET", headers: {'uuid':uuid }})
+	fetch("http://cubbitvault-env.eba-humyr29r.eu-west-3.elasticbeanstalk.com/v1/data", { method: "GET", headers: {'uuid':uuid }})
 		.then((res)=>res.json()).then((json)=>{
 
 	if(json['filename'] !== 'not-found'){
