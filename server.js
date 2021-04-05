@@ -8,26 +8,17 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const path = require('path');
 const AWS = require('aws-sdk');
-
+AWS.config.update({region: 'us-west-3'});
 const BUCKET_NAME = "cubbit-vault";
 const IAM_USER_KEY = "AKIAWXUGRUSNBQFNLWEZ";
 const IAM_USER_SECRET = "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";
+var fs = require('fs');
 
 const s3bucket = new AWS.S3({
   accessKeyId: IAM_USER_KEY,
   secretAccessKey: IAM_USER_SECRET
 });
 
-function uploadObjectToS3Bucket(objectName, objectData) {
-  const params = {
-    Bucket: BUCKET_NAME,
-    Key: objectName,
-    Body: objectData
-  };  s3bucket.upload(params, function(err, data) {
-    if (err) throw err;
-    console.log(`File uploaded successfully at ${data.Location}`)
-  });
-}
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -109,7 +100,22 @@ app.get('/v1/files', (req,res)=> {
 
 app.post('/v1/files', upload.single("file") ,(req, res, next) => {
 
-  uploadObjectToS3Bucket('helloworld.json', 'Hello World!');
+  var fileStream = fs.createReadStream(req.file);
+  fileStream.on('error', function(err) {
+  console.log('File Error', err);
+    });
+  uploadParams.Body = fileStream;
+  var path = require('path');
+  uploadParams.Key = path.basename(req.headers.filename);
+  s3.upload (uploadParams, function (err, data) {
+  if (err) {
+    console.log("Error", err);
+  } if (data) {
+    console.log("Upload Success", data.Location);
+  }
+});
+
+  res.send("Loaded to s3")
 
   /*
 	if(!req.file){console.log("fallito")}else{console.log("File salvato in " + req.file.path)}
