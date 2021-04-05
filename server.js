@@ -96,17 +96,19 @@ app.get('/v1/files', (req,res)=> {
   db.query(readDb, [req.header("uuid")], (err, response)=>{
     if(err){response.send(err)}else{
 
+
       const params = {
           Bucket: BUCKET_NAME,  
-          Key: response[0]['Path']      
+          Key: response[0]['Path'],
+          key: response[0]['Path']  
 };
 
 s3.getObject(params, function (err, data) {
                 if (err) {
-                    reject(err);
+                    console.log(err);
                 } else {
                     console.log("Successfully dowloaded data from  bucket");
-                    res.send(data);
+                    res.send(data.Body);
                 }
             });
 
