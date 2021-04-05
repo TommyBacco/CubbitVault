@@ -7,10 +7,13 @@ const { v1: uuidv1 } = require('uuid');
 const app = express();
 const PORT = process.env.PORT || 8080;
 const path = require('path');
+const fs = require('fs');
+
+fs.mkdir('/upload')
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null, 'tmp/deployment/application/');
+    cb(null, 'upload/');
   },
   filename: function(req, file, cb) {
     cb(null, req.headers.filename + ".enc");
