@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 8080;
 const path = require('path');
 const AWS = require('aws-sdk');
 const multerS3 = require('multer-s3')
+AWS.config.update({region: 'eu-west-3'});
 const BUCKET_NAME = "cubbit-vault";
 const IAM_USER_KEY = "AKIAWXUGRUSNBQFNLWEZ";
 const IAM_USER_SECRET = "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";
