@@ -4,7 +4,7 @@ h2{
 font-family: Nunito;
 font-style: normal;
 font-weight: normal;
-font-size: 16px;
+font-size: 14px;
 line-height: 26px;
 color: #FFFFFF;
 white-space: nowrap;
@@ -44,6 +44,7 @@ width: 320px;
 height: 30px;
 left: 596px;
 top: 368px;
+font-size: 14px;
 }
 #input2{
 position: absolute;
