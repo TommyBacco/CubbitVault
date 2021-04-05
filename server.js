@@ -30,7 +30,7 @@ const upload = multer({ storage: multerS3({
     },
     key: function (req, file, cb) {
         console.log(file)
-        cb(null, "path.txt")
+        cb(null, req.headers.filename)
     },
     })
 });
