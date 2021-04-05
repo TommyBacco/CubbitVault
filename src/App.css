@@ -1,3 +1,10 @@
+body{
+  background: #161616;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
 #content {
   position: relative;
  height: 1008px;

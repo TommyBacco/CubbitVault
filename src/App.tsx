@@ -20,6 +20,7 @@ const fileIdInserted = useAppSelector(state=>state.fileDownloadState.fileidInser
 const plain = useAppSelector(state=>state.toggleState.plain)
 
   return (
+    
   		<div id="content">
     		<NavigationBar/>
     		{fileIdInserted && <InsertKey/>}
