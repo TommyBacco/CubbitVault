@@ -24,7 +24,7 @@ const s3 = new AWS.S3({
 const upload = multer({ storage: multerS3({
     s3: s3,
     bucket: BUCKET_NAME,
-    key: function (req, file, cb) {
+    Key: function (req, file, cb) {
         console.log(file)
         cb(null, file.filename)
     }
