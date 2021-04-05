@@ -7,14 +7,27 @@ const { v1: uuidv1 } = require('uuid');
 const app = express();
 const PORT = process.env.PORT || 8080;
 const path = require('path');
-const fs = require('fs');
+const AWS = require('aws-sdk');
 
-fs.mkdir('/upload', (err) => {
-    if (err) {
-        throw err;
-    }
-    console.log("Directory is created.");
+const BUCKET_NAME = "cubbit-vault";
+const IAM_USER_KEY = "AKIAWXUGRUSNBQFNLWEZ";
+const IAM_USER_SECRET = "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";
+
+const s3bucket = new AWS.S3({
+  accessKeyId: IAM_USER_KEY,
+  secretAccessKey: IAM_USER_SECRET
 });
+
+function uploadObjectToS3Bucket(objectName, objectData) {
+  const params = {
+    Bucket: BUCKET_NAME,
+    Key: objectName,
+    Body: objectData
+  };  s3bucket.upload(params, function(err, data) {
+    if (err) throw err;
+    console.log(`File uploaded successfully at ${data.Location}`)
+  });
+}
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -44,9 +57,8 @@ app.use(function(req, res, next) {
    next(); 
 }); 
 
-app.post('/prova', (req,res)=>{
-  res.send("prova arrivata")
-})
+
+
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -97,6 +109,9 @@ app.get('/v1/files', (req,res)=> {
 
 app.post('/v1/files', upload.single("file") ,(req, res, next) => {
 
+  uploadObjectToS3Bucket('helloworld.json', 'Hello World!');
+
+  /*
 	if(!req.file){console.log("fallito")}else{console.log("File salvato in " + req.file.path)}
 	var uuid1 = uuidv1()
 	console.log(uuid1)	
@@ -111,5 +126,5 @@ app.post('/v1/files', upload.single("file") ,(req, res, next) => {
     })
     res.send(uuid1)
     console.log(JSON.stringify(req.headers));
-	next()
+	next()*/
 });
